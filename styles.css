@@ -143,7 +143,7 @@ h1.title {
 
 h2.subtitle {
 	background-color: var(--minor);
-	font-size: 115%;
+	font-size: 150%;
 	font-weight: bold;
 	margin-bottom: 0em;
 	margin-left: 1.5em;
@@ -155,13 +155,13 @@ h2.spaceBefore {
 }
 
 h3.subsubtitle {
-	
-	font-size: 115%;
+	color: #9947f7;
+	font-size: 130%;
 	font-weight: bold;
 	line-height: 165%;
 	margin-bottom: 0em;
 	margin-left: 1.5em;
-	margin-top: 0em;
+	margin-top: 0.5em;
 	text-indent: -1.5em;
 }
 h3.spaceBefore {
@@ -173,6 +173,7 @@ h4.info {
 	line-height: 165%;
 	margin-bottom: 0em;
 	margin-top: 0em;
+	margin-left: 1em;
 }
 
 h4.reference {
