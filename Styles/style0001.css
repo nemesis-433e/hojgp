@@ -1,0 +1,282 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    height: 20px; 
+	margin: 0;
+	font-family: sans-serif;
+}
+.header a {
+    text-decoration: none;
+    padding: 5px 10px;
+}
+.header a:nth-child(2) { 
+    width: 50px;
+    text-align: center;
+}
+.header a:first-child {
+    width: calc(50% - 50px); 
+    text-align: right;
+}
+.header a:last-child {
+    width: calc(50% - 50px);
+    text-align: left;
+}
+
+.translation{
+	letter-spacing: 0rem;
+}
+.explanation{
+	margin-top: 1rem;
+	letter-spacing: 0.02rem;
+}
+.type{
+	margin-top: 0.5rem;
+}
+.original{
+	font-size: large;
+	letter-spacing: 0.1rem;
+}
+h1.title {
+	background-color: gainsboro;
+	font-family: sans-serif;
+	font-size: 135%;
+	font-weight: bold;
+	line-height: 160%;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+}
+
+h2.subtitle {
+	font-family: sans-serif;
+	font-size: 115%;
+	font-weight: bold;
+	line-height: 165%;
+	margin-bottom: 0em;
+	margin-left: 1.5em;
+	margin-top: 0em;
+	text-indent: -1.5em;
+}
+
+h2.choice {
+
+}
+
+h2.spaceBefore {
+	margin-top: 1em;
+}
+
+h3.subsubtitle {
+	font-family: sans-serif;
+	font-size: 115%;
+	font-weight: bold;
+	line-height: 165%;
+	margin-bottom: 0em;
+	margin-left: 1.5em;
+	margin-top: 0em;
+	text-indent: -1.5em;
+}
+
+h3.spaceBefore {
+	margin-top: 1em;
+}
+
+h4.info {
+	font-family: sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	line-height: 165%;
+	margin-bottom: 0em;
+	margin-top: 0em;
+}
+
+h4.reference {
+	font-family: sans-serif;
+	font-size: 93%;
+	font-weight: bold;
+	line-height: 185%;
+	margin-bottom: 0em;
+	margin-left: 1em;
+	margin-top: 0em;
+}
+
+div {
+	line-height: 135%;
+}
+
+div.cover img {
+	width: 100%;
+}
+
+div.example {
+	font-size: 105%;
+	line-height: 165%;
+	margin-bottom: 0.5em;
+	margin-left: 3em;
+	text-indent: -3em;
+}
+
+div.explanation {
+	font-size: 110%;
+	line-height: 135%;
+	margin-bottom: 0.5em;
+}
+
+div.type {
+	margin-left: 4em;
+	text-indent: -4em;
+}
+
+div.talk {
+	margin-left: 4.5em;
+	text-indent: -4.5em;
+}
+
+div.xtalk {
+	margin-left: 5.5em;
+	text-indent: -5.5em;
+}
+
+div.indexTitle {
+	
+}
+
+div.indexSubtitle {
+	margin-left: 2.5em;
+	text-indent: -1.5em;
+}
+
+h1.pTitle {
+	font-family: sans-serif;
+	font-size: 145%;
+	font-weight: bold;
+	line-height: 145%;
+	margin-bottom: 1em;
+	margin-top: 0em;
+	text-align: center;
+}
+
+h2.pHead {
+	font-family: sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	line-height: 145%;
+	margin-bottom: 0em;
+	margin-top: 1em;
+}
+
+div.pEn {
+	font-size: 100%;
+	line-height: 145%;
+	margin-top: 1em;
+}
+
+div.pJa {
+	font-size: 100%;
+	line-height: 165%;
+	margin-top: 1em;
+	text-indent: 1em;
+}
+
+div.pRight {
+	text-align: right;
+}
+
+div.pEnum {
+	margin-left: 2em;
+	text-indent: -2em;
+}
+
+div.pBorder {
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
+div.pCol {
+	margin-top: 0em;
+}
+
+h1.door {
+	font-family: sans-serif;
+	font-size: 200%;
+	font-weight: bold;
+	margin-top: 9em;
+	text-align: right;
+}
+
+span {
+
+}
+
+span.seigo {
+	display: inline-block;
+	margin-left: 0em;
+	text-indent: 0em;
+	width: 3em;
+}
+
+span.type {
+	display: inline-block;
+	margin-left: 0em;
+	text-indent: 0em;
+	width: 4em;
+}
+
+span.number {
+	display: inline-block;
+	margin-left: 0em;
+	text-indent: 0em;
+	width: 1.5em;
+}
+
+span.reference {
+	font-size: 95%;
+}
+
+span.noSeparate {
+	word-break: keep-all;
+}
+
+span.error {
+}
+
+span.pNum {
+	display: inline-block;
+	margin-left: 0em;
+	text-indent: 0em;
+	width: 2em;
+}
+
+rt {
+	transform: translateY(0.25em);
+}
+
+td {
+	padding-right: 0.5em;
+	vertical-align: top;
+}
+
+td.nowrap {
+	white-space: nowrap;
+}
+
+ol.nav {
+	list-style-type: none;
+}
+
+rt{
+	display: none;
+}
+rb{
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+
+ruby {
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
