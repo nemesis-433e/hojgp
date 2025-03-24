@@ -163,11 +163,12 @@ span.number {
 	background-color: inherit;
 	font-size: normal;
 }
-span.reference, h4.reference {
+span.reference{
 	display: block;
 	color: rgb(0, 119, 255);
+	font-size: 0.75em;
 }
-span.reference:hover, a:hover {
+a:hover {
 	cursor: pointer;
 }
 span.noSeparate {
@@ -232,6 +233,8 @@ h4.reference {
 	margin-bottom: 0em;
 	margin-left: 1em;
 	margin-top: 0em;
+	display: block;
+	color: rgb(0, 119, 255);
 }
 
 /* === INDEX === */

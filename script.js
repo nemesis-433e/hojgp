@@ -46,6 +46,7 @@ function loadChapter(chapterUrl, pushState = true) {
         });
 }
 
+
 // Initialize chapter on page load
 window.addEventListener('load', async () => {
     try {
@@ -108,15 +109,23 @@ function updateNavigationButtons(currentChapter) {
 
     // Update previous button
     if (prevNum >= 7) { // 7 is the index
-        const prevFile = prevNum === 7 ? 'index.html' : formatChapterFilename(prevNum);
+        // const prevFile = prevNum === 7 ? 'index.html' : formatChapterFilename(prevNum);
+        const prevFile = formatChapterFilename(prevNum);
         const prevTitle = prevNum === 7 ? 'Index' : chaptersMap.get(prevFile);
         
         prevBtn.style.display = 'inline-block';
         prevBtn.innerHTML = `←${prevTitle || 'Previous'}`;
-        prevBtn.onclick = () => {
-            loadChapter(prevFile);
-            updateNavigationButtons(prevFile);
-        };
+        if(prevNum === 7){
+            prevBtn.onclick = () => {
+                window.location.href = 'index.html';
+                updateNavigationButtons(prevFile);
+            };
+        }else{
+            prevBtn.onclick = () => {
+                loadChapter(prevFile);
+                updateNavigationButtons(prevFile);
+            };
+        }
     } else {
         prevBtn.style.display = 'none';
     }
