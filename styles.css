@@ -29,7 +29,11 @@
 	background-color: var(--bg);
 	color: var(--color);
 }
-
+i{
+	font-size: 1.5em;
+	margin: 0 0.1em;
+	color: white;
+}
 main{
     max-width: 800px;
     margin: auto;
@@ -250,7 +254,7 @@ td {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px;
+    padding: 0em;
 }
 
 /* Container for search input and results */
