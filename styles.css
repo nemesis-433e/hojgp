@@ -75,6 +75,8 @@ header {
 #prev-btn, #next-btn{
 	width: 50%;
 	cursor: pointer;
+	font-weight: bold;
+	color: rgb(0, 110, 255);
 }
 
 #prev-btn{
