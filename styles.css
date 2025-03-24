@@ -1,46 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 
 :root{
+	font-family: "Noto Sans JP", sans-serif;
+}
+[data-theme="dark"]{
     --main: #9b46fde1;
     --def: #9b46fda8;
     --minor: #9b6dcf;
     --border: #5c00c5;
-	font-family: "Noto Sans JP", sans-serif;
-	background-color: rgb(26, 26, 26);
-	color: white;
+	--bg: rgb(0, 0, 0);
+	--color: rgb(255, 255, 255);
 }
+[data-theme="light"]{
+    --main: #9b46fde1;
+    --def: #9b46fda8;
+    --minor: #9b6dcf;
+    --border: #5c00c5;
+	--bg: rgb(219, 219, 219);
+	--color: rgb(34, 34, 34);
+}
+
 /* === HEADER/NAVIGATION === */
-body{
-	max-width: 800px;
-	margin: auto;
+ /* Basic styling for layout */
+ body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+	background-color: var(--bg);
+	color: var(--color);
 }
-.header {
+
+main{
+    max-width: 800px;
+    margin: auto;
+}
+header {
+    margin: 0;
+    background: var(--main);
+    color: white;
+    padding: 1rem;
+}
+
+nav {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 20px; 
-	margin: 0;
-	font-size: 0.9rem;
+    gap: 1rem;
 }
-.header a {
-    text-decoration: none;
-	margin: 0;
-	padding: 0;
+.nav-btn:hover{
+    cursor: pointer;
+}       
+
+#search-input {
+    flex: 1;
+    padding: 0.5rem;
 }
-.header a:nth-child(2) { 
-    min-width: 40px;
+
+#content-container {
+    padding: 1rem;
+}
+
+.buttons {
+    background: inherit;
+	margin-top: 0.5em;
     text-align: center;
-	padding: 0 7px;
+	display: flex;
 }
-.header a:first-child {
-	width: 40%;
-    text-align: right;
-	flex-grow: 1;
+
+#prev-btn, #next-btn{
+	width: 50%;
+	cursor: pointer;
 }
-.header a:last-child {
-	width: 40%;
-    text-align: left;
-	flex-grow: 1;
+#prev-btn{
+	text-align: right;
+	margin-right: 0.25em;
+}
+#next-btn{
+	text-align: left;
+	margin-left: 0.25em;
 }
 
 /* === TEXT ELEMENTS === */
@@ -51,9 +87,6 @@ body{
 	margin-bottom: 0.5em;
 	margin-left: 0.5rem;
 	margin: 1rem 1rem 0.5rem;
-}
-div.explanation{
-
 }
 .original{
 	font-size: large;
@@ -121,7 +154,12 @@ span.number {
 	font-size: normal;
 }
 span.reference {
-	font-size: 95%;
+	font-size: 75%;
+	display: block;
+	color: rgb(0, 119, 255);
+}
+span.reference:hover {
+	cursor: pointer;
 }
 span.noSeparate {
 	word-break: keep-all;
@@ -137,25 +175,26 @@ div.xtalk {
 }
 /* === HEADINGS === */
 h1.title {
-	background-color: var(--def);
-	font-size: 2em;
+	color: var(--def);
+	font-size: 3em;
 	font-weight: bold;
 	line-height: 160%;
-	margin-bottom: 0.5em;
-	margin-top: 0.5em;
+	margin-bottom: 0em;
+	margin-top: 0em;
 }
 
 h2.subtitle {
 	background-color: var(--minor);
-	font-size: 150%;
+	font-size: 1.5em;
 	font-weight: bold;
 	margin-bottom: 0em;
 	margin-top: 0em;
-	word-wrap: break-word;
-	overflow-wrap: break-word;  
 }
 h2.spaceBefore {
 	margin-top: 1em;
+}
+h2.subtitle.ref{
+	background-color: var(--bg);
 }
 
 h3.subsubtitle {
@@ -189,6 +228,10 @@ h4.reference {
 div.indexSubtitle {
 	margin-left: 2.5em;
 	text-indent: -1.5em;
+	cursor: pointer;
+}
+div.indexTitle{
+	cursor: pointer;
 }
 td {
 	padding-right: 0.5em;

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Handbook of Japanese Grammar Patterns</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body><!-- Global Navigation Bar -->
+    <header>
+        <nav id="global-nav"><input type="text" id="search-input" placeholder="Search grammar points... (NOT WORKING RN)"><a
+                href="index.html"><i class="fa-solid fa-house nav-btn"></i></a>
+            <div id="theme-toggle"><i class="fa-solid fa-sun nav-btn"></i></div>
+            <div id="translation-toggle" onclick="toggleTranslation()"><i class="fa-solid fa-language nav-btn"></i>
+            </div>
+        </nav>
+    </header>
+    <div class="buttons"><div id="prev-btn">Previous</div><div id="next-btn">Next</div></div>
+    <!-- Container where chapters will be loaded -->
+    <main id="content-container"><!-- Chapter content will be loaded here -->
+        <p>Loading chapter...</p>
+    </main><!-- Footer with Next/Previous controls -->
+    <script src="script.js"></script>
+</body>
+
+</html>
