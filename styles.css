@@ -2,14 +2,15 @@
 
 :root{
 	font-family: "Noto Sans JP", sans-serif;
+	--nav: #7824d8;
 }
 
 [data-theme="dark"]{
     --main: #9b46fde1;
     --def: #9b46fda8;
-    --minor: #9b6dcf;
-    --border: #5c00c5;
-	--bg: rgb(0, 0, 0);
+    --minor: #6d31b3;
+    --border: #7700ff;
+	--bg: rgb(22, 17, 26);
 	--color: rgb(255, 255, 255);
 }
 
@@ -18,20 +19,20 @@
     --def: #9b46fda8;
     --minor: #9b6dcf;
     --border: #5c00c5;
-	--bg: rgb(219, 219, 219);
+	--bg: rgb(227, 218, 236);
 	--color: rgb(34, 34, 34);
 }
 
 /* === HEADER/NAVIGATION === */
  body {
     font-family: sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0em;
+    padding: 0em;
 	background-color: var(--bg);
 	color: var(--color);
 }
 
-i{
+.nav-btn{
 	font-size: 1.5em;
 	margin: 0 0.1em;
 	color: white;
@@ -40,20 +41,14 @@ i{
 main{
     max-width: 800px;
     margin: auto;
+	padding: 0em;
 }
 header {
     margin: 0;
-    background: var(--main);
+    background: var(--nav);
     color: white;
     padding: 1rem;
 }
-
-nav {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
 .nav-btn:hover{
     cursor: pointer;
 }       
@@ -64,7 +59,7 @@ nav {
 }
 
 #content-container {
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 .buttons {
@@ -93,16 +88,13 @@ nav {
 .explanation{
 	letter-spacing: 0.02rem;
 	line-height: 135%;
-	margin-top: 1rem;
-	margin-bottom: 0.5em;
-	margin-left: 0.5rem;
-	margin: 1rem 1rem 0.5rem;
+	margin: 1.5rem 1rem 0.5rem;
 }
 
 .original{
-	font-size: large;
+	font-size: 1.1em;
 	letter-spacing: 0.025rem;
-	font-weight: 550;
+	font-weight: 500;
 	text-indent: -3em;
 }
 
@@ -166,12 +158,11 @@ span.number {
 	background-color: inherit;
 	font-size: normal;
 }
-span.reference {
-	font-size: 75%;
+span.reference, h4.reference {
 	display: block;
 	color: rgb(0, 119, 255);
 }
-span.reference:hover {
+span.reference:hover, a:hover {
 	cursor: pointer;
 }
 span.noSeparate {
@@ -192,19 +183,17 @@ div.xtalk {
 /* === HEADINGS === */
 h1.title {
 	color: var(--def);
-	font-size: 3em;
+	font-size: 2.5em;
 	font-weight: bold;
-	line-height: 160%;
-	margin-bottom: 0em;
-	margin-top: 0em;
+	margin: 0.25em 0em 0.25em -0.25em;
 }
 
 h2.subtitle {
 	background-color: var(--minor);
 	font-size: 1.5em;
 	font-weight: bold;
-	margin-bottom: 0em;
-	margin-top: 0em;
+	margin: 0em 0em 1em;
+	width: 100%;
 }
 h2.spaceBefore {
 	margin-top: 1em;
@@ -215,9 +204,8 @@ h2.subtitle.ref{
 
 h3.subsubtitle {
 	color: #9947f7;
-	font-size: 130%;
+	font-size: 1.25em;
 	font-weight: bold;
-	line-height: 165%;
 	margin-bottom: 0em;
 	margin-top: 0.5em;
 }
@@ -231,6 +219,7 @@ h4.info {
 	margin-bottom: 0em;
 	margin-top: 0em;
 	margin-left: 1em;
+	color: rgb(151, 151, 151);
 }
 
 h4.reference {
@@ -258,6 +247,7 @@ td {
 }
 h2.title{
 	color: var(--main);
+	margin-left: 0.5em;
 }
 
 /* === NAV BAR === */
@@ -322,4 +312,9 @@ h2.title{
 
 .search-result-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+header{
+	position: sticky;
+	top: 0; /* Required for sticky to work */
+	z-index: 100; /* Ensures navbar stays above other content */
 }

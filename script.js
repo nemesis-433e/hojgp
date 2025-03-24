@@ -108,7 +108,7 @@ function updateNavigationButtons(currentChapter) {
 
     // Update previous button
     if (prevNum >= 7) { // 7 is the index
-        const prevFile = prevNum === 7 ? 'part0007.html' : formatChapterFilename(prevNum);
+        const prevFile = prevNum === 7 ? 'index.html' : formatChapterFilename(prevNum);
         const prevTitle = prevNum === 7 ? 'Index' : chaptersMap.get(prevFile);
         
         prevBtn.style.display = 'inline-block';
