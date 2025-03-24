@@ -1,7 +1,6 @@
-// Add these variables at the top
 let chaptersMap = new Map();
-let minChapter = 8;  // Assuming your first chapter is part0008.html
-let maxChapter = 1094; // Assuming your last chapter is part1094.html
+let minChapter = 8;
+let maxChapter = 1094;
 
 // Utility to get URL query parameters
 function getQueryParam(param) {
@@ -16,9 +15,52 @@ function formatChapterFilename(num) {
 }
 
 // Load chapter content and update URL if specified
-function loadChapter(chapterUrl, pushState = true) {
+// function loadChapter(chapterUrl, pushState = true, mouseEvent = null) {
+//     if (pushState) {
+//         const newUrl = `${window.location.pathname}?chapter=${chapterUrl}`;
+//         history.pushState(null, '', newUrl);
+//     }
+
+//     const [file, anchor] = chapterUrl.split('#');
+
+//     fetch(file)
+//         .then(response => {
+//             if (!response.ok) throw new Error("Network response was not ok");
+//             return response.text();
+//         })
+//         .then(html => {
+//             document.getElementById('content-container').innerHTML = html;
+//             updateTranslations();
+//             updateNavigationButtons(chapterUrl);
+//             if (anchor) {
+//                 setTimeout(() => {
+//                     const target = document.getElementById(anchor);
+//                     if (target) target.scrollIntoView({ behavior: 'smooth' });
+//                 }, 50);
+//             }
+//         })
+//         .catch(err => {
+//             console.error("Failed to load chapter:", err);
+//             document.getElementById('content-container').innerHTML = "<p>Error loading chapter.</p>";
+//         });
+// }
+function loadChapter(chapterUrl, pushState = true, mouseEvent = null) {
+    // Handle backward compatibility for existing onclick="loadChapter('file.html', event)" calls
+    if (typeof pushState !== 'boolean') {
+        mouseEvent = pushState;
+        pushState = true;
+    }
+
+    // Handle middle click (button 1)
+    if (mouseEvent?.button === 1) {
+        const newUrl = `${window.location.pathname}index.html?chapter=${encodeURIComponent(chapterUrl)}`;
+        window.open(newUrl, '_blank');
+        return;
+    }
+
+    // Original logic for normal navigation
     if (pushState) {
-        const newUrl = `${window.location.pathname}?chapter=${chapterUrl}`;
+        const newUrl = `${window.location.pathname}index.html?chapter=${encodeURIComponent(chapterUrl)}`;
         history.pushState(null, '', newUrl);
     }
 
@@ -45,6 +87,7 @@ function loadChapter(chapterUrl, pushState = true) {
             document.getElementById('content-container').innerHTML = "<p>Error loading chapter.</p>";
         });
 }
+
 
 
 // Initialize chapter on page load
@@ -88,8 +131,8 @@ window.addEventListener('popstate', () => {
     // Load the chapter without creating new history entry
     loadChapter(chapter, false);
 });
+
 // Update next/previous buttons based on current chapter
-// Modified updateNavigationButtons function
 function updateNavigationButtons(currentChapter) {
     const [currentFile] = currentChapter.split('#');
     const prevBtn = document.getElementById('prev-btn');
@@ -122,7 +165,7 @@ function updateNavigationButtons(currentChapter) {
             };
         }else{
             prevBtn.onclick = () => {
-                loadChapter(prevFile);
+                loadChapter(prevFile, true);
                 updateNavigationButtons(prevFile);
             };
         }
@@ -138,7 +181,7 @@ function updateNavigationButtons(currentChapter) {
         nextBtn.style.display = 'inline-block';
         nextBtn.innerHTML = `${nextTitle || 'Next'}→`;
         nextBtn.onclick = () => {
-            loadChapter(nextFile);
+            loadChapter(nextFile, true);
             updateNavigationButtons(nextFile);
         };
     } else {

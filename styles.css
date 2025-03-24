@@ -120,6 +120,11 @@ header {
 	color: gray;
 }
 
+div.explanation.type > span.translation {
+	margin-left: -1em;
+  }
+
+
 rb{
 	padding: 0;
 	margin: 0;
