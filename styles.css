@@ -257,6 +257,8 @@ td {
 .search-container {
     position: relative; /* This creates a positioning context for child elements */
     flex-grow: 1; /* Allow the search bar to grow and fill available space */
+	max-width: 800px;
+	margin: auto;
 }
 
 /* Search input styling */
