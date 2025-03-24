@@ -233,11 +233,9 @@ div.indexSubtitle {
 	margin-left: 2.5em;
 	text-indent: -1.5em;
 	cursor: pointer;
-	font-size: larger;
 }
 div.indexTitle{
 	cursor: pointer;
-	font-size: larger;
 }
 div.indexTitle:hover, div.indexSubtitle:hover{
 	color: var(--main);
@@ -246,9 +244,11 @@ td {
 	padding-right: 0.5em;
 	vertical-align: top;
 }
+h2.title{
+	color: var(--main);
+}
 
-
-/* Ensure the nav bar is positioned correctly */
+/* === NAV BAR === */
 #global-nav {
     position: relative; /* This is crucial for absolute positioning of children */
     display: flex;
@@ -265,21 +265,19 @@ td {
 	margin: auto;
 }
 
-/* Search input styling */
 #search-input {
     width: 100%; /* Fill the container */
     padding-right: 30px; /* Space for close button */
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
-/* Close button styling */
 .close-search {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%); /* Center vertically */
     cursor: pointer;
-    color: #666;
+    color: black;
     font-size: 1.5em;
     display: none; /* Hidden by default */
     z-index: 2; /* Ensure it's above the input */
@@ -309,7 +307,7 @@ td {
 .search-result-item {
     padding: 10px;
     cursor: pointer;
-    color: var(--text-color);
+    color: var(--color);
     border-bottom: 1px solid #444;
 }
 

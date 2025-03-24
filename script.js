@@ -140,14 +140,14 @@ function updateNavigationButtons(currentChapter) {
 // ================ SEARCH =================
 // Optionally, load the full search JSON only when needed.
 // Load your grammar data (replace with your actual JSON path)
-let grammarData = [];
+// let grammarData = [];
 
 fetch('chapters.json')
     .then(response => response.json())
     .then(data => grammarData = data)
     .catch(error => console.error('Error loading grammar data:', error));
 
-// Get DOM elements
+// get elements
 const searchInput = document.getElementById('search-input');
 const searchResults = document.getElementById('search-results');
 const closeBtn = document.createElement('span');
@@ -155,7 +155,7 @@ closeBtn.innerHTML = '×';
 closeBtn.className = 'close-search';
 searchInput.parentNode.insertBefore(closeBtn, searchInput.nextSibling);
 
-// Search functionality
+// functionality
 function performSearch(query) {
     if (!query) {
         closeSearchResults();
@@ -196,14 +196,12 @@ function closeSearchResults() {
     closeBtn.style.display = 'none';
 }
 
-// Event Listeners
+// event listeners
 searchInput.addEventListener('input', (e) => {
     closeBtn.style.display = e.target.value ? 'block' : 'none';
     performSearch(e.target.value);
 });
-
 closeBtn.addEventListener('click', closeSearchResults);
-
 document.addEventListener('click', (e) => {
     if (!searchInput.contains(e.target) && 
         !searchResults.contains(e.target)) {
@@ -211,7 +209,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Handle scroll in search results
+// scroll 
 searchResults.addEventListener('wheel', (e) => {
     e.stopPropagation();
 });
@@ -250,15 +248,14 @@ function updateTranslations() {
 (function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
-    
-    // Get stored theme or default to 'dark'
+
     const storedTheme = localStorage.getItem('theme') || 'dark';
     
     // Set initial theme and icon
     html.setAttribute('data-theme', storedTheme);
     themeToggle.innerHTML = storedTheme === 'dark' 
-        ? '<i class="fa-solid fa-sun nav-btn"></i>'  // Display sun icon to indicate switching to light
-        : '<i class="fa-solid fa-moon nav-btn"></i>'; // Display moon icon to indicate switching to dark
+        ? '<i class="fa-solid fa-moon nav-btn"></i>' 
+        : '<i class="fa-solid fa-sun nav-btn"></i>'; 
 
     // Toggle theme function
     function toggleTheme() {
@@ -266,10 +263,10 @@ function updateTranslations() {
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         themeToggle.innerHTML = newTheme === 'dark' 
-            ? '<i class="fa-solid fa-sun nav-btn"></i>'  // When switching back to dark, show sun icon
-            : '<i class="fa-solid fa-moon nav-btn"></i>'; // When switching to light, show moon icon
+            ? '<i class="fa-solid fa-moon nav-btn"></i>'
+            : '<i class="fa-solid fa-sun nav-btn"></i>';
     }
 
-    // Event listener for the theme toggle button
+    // toggle button
     themeToggle.addEventListener('click', toggleTheme);
 })();
