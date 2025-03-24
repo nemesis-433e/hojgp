@@ -49,7 +49,7 @@ function loadChapter(chapterUrl, pushState = true) {
 // Initialize chapter on page load
 window.addEventListener('load', async () => {
     try {
-        // Load chapters.json
+        // load
         const response = await fetch('chapters.json');
         const chapters = await response.json();
         
@@ -138,10 +138,6 @@ function updateNavigationButtons(currentChapter) {
 }
 
 // ================ SEARCH =================
-// Optionally, load the full search JSON only when needed.
-// Load your grammar data (replace with your actual JSON path)
-// let grammarData = [];
-
 fetch('chapters.json')
     .then(response => response.json())
     .then(data => grammarData = data)
@@ -251,13 +247,13 @@ function updateTranslations() {
 
     const storedTheme = localStorage.getItem('theme') || 'dark';
     
-    // Set initial theme and icon
+    // initial theme and icon
     html.setAttribute('data-theme', storedTheme);
     themeToggle.innerHTML = storedTheme === 'dark' 
         ? '<i class="fa-solid fa-moon nav-btn"></i>' 
         : '<i class="fa-solid fa-sun nav-btn"></i>'; 
 
-    // Toggle theme function
+    // toggle theme function
     function toggleTheme() {
         const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', newTheme);

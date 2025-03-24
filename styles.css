@@ -3,6 +3,7 @@
 :root{
 	font-family: "Noto Sans JP", sans-serif;
 }
+
 [data-theme="dark"]{
     --main: #9b46fde1;
     --def: #9b46fda8;
@@ -11,6 +12,7 @@
 	--bg: rgb(0, 0, 0);
 	--color: rgb(255, 255, 255);
 }
+
 [data-theme="light"]{
     --main: #9b46fde1;
     --def: #9b46fda8;
@@ -21,7 +23,6 @@
 }
 
 /* === HEADER/NAVIGATION === */
- /* Basic styling for layout */
  body {
     font-family: sans-serif;
     margin: 0;
@@ -29,11 +30,13 @@
 	background-color: var(--bg);
 	color: var(--color);
 }
+
 i{
 	font-size: 1.5em;
 	margin: 0 0.1em;
 	color: white;
 }
+
 main{
     max-width: 800px;
     margin: auto;
@@ -50,6 +53,7 @@ nav {
     align-items: center;
     gap: 1rem;
 }
+
 .nav-btn:hover{
     cursor: pointer;
 }       
@@ -74,10 +78,12 @@ nav {
 	width: 50%;
 	cursor: pointer;
 }
+
 #prev-btn{
 	text-align: right;
 	margin-right: 0.25em;
 }
+
 #next-btn{
 	text-align: left;
 	margin-left: 0.25em;
@@ -92,12 +98,14 @@ nav {
 	margin-left: 0.5rem;
 	margin: 1rem 1rem 0.5rem;
 }
+
 .original{
 	font-size: large;
 	letter-spacing: 0.025rem;
 	font-weight: 550;
 	text-indent: -3em;
 }
+
 .example {
 	line-height: 165%;
 	text-indent: -3em;
@@ -106,6 +114,7 @@ nav {
 	margin-bottom: -0.5em;
 	margin-right: 0.5em;
 }
+
 .translation{
 	letter-spacing: 0rem;
 	display: block;
@@ -118,10 +127,12 @@ rb{
 	padding: 0;
 	margin: 0;
 }
+
 ruby {
 	padding: 0;
 	margin: 0;
 }
+
 rt{
 	transform: translateY(0.25em);
 	display: none;
@@ -129,10 +140,8 @@ rt{
 
 .type{
 	margin-top: 0.5rem;
-	/* div.type */
 	margin-left: 4em;
 	text-indent: -4em;
-	
 }
 
 span.seigo {
@@ -173,10 +182,13 @@ div.talk {
 	margin-left: 4.5em;
 	text-indent: -4.5em;
 }
+
 div.xtalk {
 	margin-left: 5.5em;
 	text-indent: -5.5em;
 }
+
+
 /* === HEADINGS === */
 h1.title {
 	color: var(--def);
@@ -250,47 +262,45 @@ h2.title{
 
 /* === NAV BAR === */
 #global-nav {
-    position: relative; /* This is crucial for absolute positioning of children */
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 0em;
 }
 
-/* Container for search input and results */
 .search-container {
-    position: relative; /* This creates a positioning context for child elements */
-    flex-grow: 1; /* Allow the search bar to grow and fill available space */
+    position: relative;
+    flex-grow: 1; 
 	max-width: 800px;
 	margin: auto;
 }
 
 #search-input {
-    width: 100%; /* Fill the container */
-    padding-right: 30px; /* Space for close button */
-    box-sizing: border-box; /* Include padding in width calculation */
+    width: 100%; 
+    padding-right: 30px; 
+    box-sizing: border-box; 
 }
 
 .close-search {
     position: absolute;
     right: 10px;
     top: 50%;
-    transform: translateY(-50%); /* Center vertically */
+    transform: translateY(-50%); 
     cursor: pointer;
     color: black;
     font-size: 1.5em;
-    display: none; /* Hidden by default */
-    z-index: 2; /* Ensure it's above the input */
+    display: none; 
+    z-index: 2;
 }
 
 .close-search:hover {
     color: #999;
 }
 
-/* Search results dropdown */
 .search-results {
     position: absolute;
-    top: 100%; /* Position directly below the search input */
+    top: 100%; 
     left: 0;
     right: 0;
     max-height: 300px;
@@ -298,12 +308,11 @@ h2.title{
     background: var(--bg);
     border: 1px solid #444;
     border-top: none;
-    display: none; /* Hidden by default */
+    display: none;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Individual search result items */
 .search-result-item {
     padding: 10px;
     cursor: pointer;
