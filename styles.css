@@ -48,6 +48,9 @@ header {
     background: var(--nav);
     color: white;
     padding: 1rem;
+	position: sticky;
+	top: 0; /* Required for sticky to work */
+	z-index: 100; /* Ensures navbar stays above other content */
 }
 .nav-btn:hover{
     cursor: pointer;
@@ -312,9 +315,4 @@ h2.title{
 
 .search-result-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
-header{
-	position: sticky;
-	top: 0; /* Required for sticky to work */
-	z-index: 100; /* Ensures navbar stays above other content */
 }
