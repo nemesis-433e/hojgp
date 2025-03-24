@@ -242,3 +242,71 @@ td {
 	padding-right: 0.5em;
 	vertical-align: top;
 }
+
+
+/* Ensure the nav bar is positioned correctly */
+#global-nav {
+    position: relative; /* This is crucial for absolute positioning of children */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+/* Container for search input and results */
+.search-container {
+    position: relative; /* This creates a positioning context for child elements */
+    flex-grow: 1; /* Allow the search bar to grow and fill available space */
+}
+
+/* Search input styling */
+#search-input {
+    width: 100%; /* Fill the container */
+    padding-right: 30px; /* Space for close button */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Close button styling */
+.close-search {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    cursor: pointer;
+    color: #666;
+    font-size: 1.5em;
+    display: none; /* Hidden by default */
+    z-index: 2; /* Ensure it's above the input */
+}
+
+.close-search:hover {
+    color: #999;
+}
+
+/* Search results dropdown */
+.search-results {
+    position: absolute;
+    top: 100%; /* Position directly below the search input */
+    left: 0;
+    right: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    background: var(--bg);
+    border: 1px solid #444;
+    border-top: none;
+    display: none; /* Hidden by default */
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual search result items */
+.search-result-item {
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-color);
+    border-bottom: 1px solid #444;
+}
+
+.search-result-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

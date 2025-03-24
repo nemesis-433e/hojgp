@@ -137,31 +137,87 @@ function updateNavigationButtons(currentChapter) {
     }
 }
 
-// =======================================================
-// SEARCH
+// ================ SEARCH =================
 // Optionally, load the full search JSON only when needed.
-document.getElementById('search-input').addEventListener('input', function (event) {
-    const query = event.target.value.trim().toLowerCase();
-    if (query.length < 2) {
-        // Optionally hide search results if query is too short.
+// Load your grammar data (replace with your actual JSON path)
+let grammarData = [];
+
+fetch('chapters.json')
+    .then(response => response.json())
+    .then(data => grammarData = data)
+    .catch(error => console.error('Error loading grammar data:', error));
+
+// Get DOM elements
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+const closeBtn = document.createElement('span');
+closeBtn.innerHTML = '×';
+closeBtn.className = 'close-search';
+searchInput.parentNode.insertBefore(closeBtn, searchInput.nextSibling);
+
+// Search functionality
+function performSearch(query) {
+    if (!query) {
+        closeSearchResults();
         return;
     }
-    // Load full search index JSON (assume "fullIndex.json")
-    fetch('fullIndex.json')
-        .then(response => response.json())
-        .then(data => {
-            // Filter search index (simple case-insensitive search on title)
-            const results = data.filter(item => item.title.toLowerCase().includes(query));
-            // Display results (for now, just log to console; you might create a dropdown list)
-            console.log("Search results:", results);
-            // You can add code here to render search results as clickable links.
-        })
-        .catch(err => console.error("Error loading search index:", err));
+
+    const results = grammarData.filter(item =>
+        item.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    displayResults(results);
+}
+
+function displayResults(results) {
+    searchResults.innerHTML = '';
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+    } else {
+        results.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'search-result-item';
+            div.innerHTML = item.title;
+            div.onclick = () => {
+                loadChapter(item.link);
+                closeSearchResults();
+            };
+            searchResults.appendChild(div);
+        });
+    }
+    
+    searchResults.style.display = 'block';
+}
+
+function closeSearchResults() {
+    searchResults.style.display = 'none';
+    searchInput.value = '';
+    closeBtn.style.display = 'none';
+}
+
+// Event Listeners
+searchInput.addEventListener('input', (e) => {
+    closeBtn.style.display = e.target.value ? 'block' : 'none';
+    performSearch(e.target.value);
+});
+
+closeBtn.addEventListener('click', closeSearchResults);
+
+document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && 
+        !searchResults.contains(e.target)) {
+        closeSearchResults();
+    }
+});
+
+// Handle scroll in search results
+searchResults.addEventListener('wheel', (e) => {
+    e.stopPropagation();
 });
 
 
-
-// ==== TRANSLATION ==== //
+// ================ TRANSLATION =================
 function toggleTranslation() {
     var translationElements = document.querySelectorAll('.translation');
     translationElements.forEach(function (element) {
@@ -190,8 +246,7 @@ function updateTranslations() {
     });
 }
 
-
-// ==== THEME ==== //
+// ================ THEME =================
 (function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;

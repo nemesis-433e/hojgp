@@ -11,8 +11,13 @@
 
 <body><!-- Global Navigation Bar -->
     <header>
-        <nav id="global-nav"><input type="text" id="search-input" placeholder="Search grammar points... (NOT WORKING RN)"><a
-                href="index.html"><i class="fa-solid fa-house nav-btn"></i></a>
+        <nav id="global-nav">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search grammar points..." autocomplete="off">
+                <span class="close-search">×</span>
+                <div id="search-results" class="search-results"></div>
+            </div>
+            <a href="index.html"><i class="fa-solid fa-house nav-btn"></i></a>
             <div id="theme-toggle"><i class="fa-solid fa-sun nav-btn"></i></div>
             <div id="translation-toggle" onclick="toggleTranslation()"><i class="fa-solid fa-language nav-btn"></i>
             </div>
