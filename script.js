@@ -16,7 +16,9 @@ function formatChapterFilename(num) {
 
 function loadChapter(chapterUrl, pushState = true, mouseEvent = null) {
     if (pushState) {
-        const newUrl = `${window.location.pathname}?chapter=${chapterUrl}`;
+        // const newUrl = `${window.location.pathname}?chapter=${chapterUrl}`;
+        // history.pushState(null, '', newUrl);
+        const newUrl = `?chapter=${chapterUrl}`;
         history.pushState(null, '', newUrl);
     }
 
@@ -118,6 +120,7 @@ function updateNavigationButtons(currentChapter) {
                 updateNavigationButtons(prevFile);
             };
         }else{
+            // prevBtn.href = `index.html?chapter=${prevFile}`;
             prevBtn.onclick = () => {
                 loadChapter(prevFile, true);
                 updateNavigationButtons(prevFile);
@@ -134,8 +137,9 @@ function updateNavigationButtons(currentChapter) {
         
         nextBtn.style.display = 'inline-block';
         nextBtn.innerHTML = `${nextTitle || 'Next'}→`;
+        // nextBtn.href = `index.html?chapter=${nextFile}`;
         nextBtn.onclick = () => {
-            loadChapter(nextFile, true);
+            loadChapter(nextFile, true)
             updateNavigationButtons(nextFile);
         };
     } else {
@@ -182,7 +186,8 @@ function displayResults(results) {
             div.className = 'search-result-item';
             div.innerHTML = item.title;
             div.onclick = () => {
-                loadChapter(item.link);
+                // loadChapter(item.link);
+                
                 closeSearchResults();
             };
             searchResults.appendChild(div);
