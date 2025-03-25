@@ -16,8 +16,6 @@ function formatChapterFilename(num) {
 
 function loadChapter(chapterUrl, pushState = true, mouseEvent = null) {
     if (pushState) {
-        // const newUrl = `${window.location.pathname}?chapter=${chapterUrl}`;
-        // history.pushState(null, '', newUrl);
         const newUrl = `?chapter=${chapterUrl}`;
         history.pushState(null, '', newUrl);
     }
@@ -94,6 +92,10 @@ function updateNavigationButtons(currentChapter) {
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
 
+    // Get the anchor elements inside the divs
+    const prevLink = prevBtn.querySelector('a');
+    const nextLink = nextBtn.querySelector('a');
+
     // Hide buttons for index page
     if (currentFile === 'part0007.html') {
         prevBtn.style.display = 'none';
@@ -108,21 +110,19 @@ function updateNavigationButtons(currentChapter) {
 
     // Update previous button
     if (prevNum >= 7) { // 7 is the index
-        // const prevFile = prevNum === 7 ? 'index.html' : formatChapterFilename(prevNum);
         const prevFile = formatChapterFilename(prevNum);
         const prevTitle = prevNum === 7 ? 'Index' : chaptersMap.get(prevFile);
-        
+
         prevBtn.style.display = 'inline-block';
-        prevBtn.innerHTML = `←${prevTitle || 'Previous'}`;
-        if(prevNum === 7){
-            prevBtn.onclick = () => {
-                window.location.href = 'index.html';
+        prevLink.innerHTML = `←${prevTitle || 'Previous'}`;
+        if (prevNum === 7) {
+            prevLink.setAttribute('href', 'index.html');
+            prevLink.onclick = () => {
                 updateNavigationButtons(prevFile);
             };
-        }else{
-            // prevBtn.href = `index.html?chapter=${prevFile}`;
-            prevBtn.onclick = () => {
-                loadChapter(prevFile, true);
+        } else {
+            prevLink.setAttribute('href', `index.html?chapter=${prevFile}`);
+            prevLink.onclick = () => {
                 updateNavigationButtons(prevFile);
             };
         }
@@ -134,18 +134,18 @@ function updateNavigationButtons(currentChapter) {
     if (nextNum <= maxChapter) {
         const nextFile = formatChapterFilename(nextNum);
         const nextTitle = chaptersMap.get(nextFile);
-        
+
         nextBtn.style.display = 'inline-block';
-        nextBtn.innerHTML = `${nextTitle || 'Next'}→`;
-        // nextBtn.href = `index.html?chapter=${nextFile}`;
-        nextBtn.onclick = () => {
-            loadChapter(nextFile, true)
+        nextLink.innerHTML = `${nextTitle || 'Next'}→`;
+        nextLink.setAttribute('href', `index.html?chapter=${nextFile}`);
+        nextLink.onclick = () => {
             updateNavigationButtons(nextFile);
         };
     } else {
         nextBtn.style.display = 'none';
     }
 }
+
 
 // ================ SEARCH =================
 fetch('chapters.json')
@@ -184,10 +184,11 @@ function displayResults(results) {
         results.forEach(item => {
             const div = document.createElement('div');
             div.className = 'search-result-item';
-            div.innerHTML = item.title;
+            const a = document.createElement('a');
+            div.appendChild(a);
+            a.href=`index.html?chapter=${item.link}`;
+            a.innerHTML = item.title;
             div.onclick = () => {
-                // loadChapter(item.link);
-                
                 closeSearchResults();
             };
             searchResults.appendChild(div);
@@ -202,7 +203,6 @@ function closeSearchResults() {
     searchInput.value = '';
     closeBtn.style.display = 'none';
 }
-
 // event listeners
 searchInput.addEventListener('input', (e) => {
     closeBtn.style.display = e.target.value ? 'block' : 'none';
@@ -215,14 +215,13 @@ document.addEventListener('click', (e) => {
         closeSearchResults();
     }
 });
-
 // scroll 
 searchResults.addEventListener('wheel', (e) => {
     e.stopPropagation();
 });
 
 
-// ================ TRANSLATION =================
+// TRANSLATION
 function toggleTranslation() {
     var translationElements = document.querySelectorAll('.translation');
     translationElements.forEach(function (element) {
@@ -239,31 +238,29 @@ function toggleTranslation() {
         localStorage.setItem('translations', 'on');
     }
 }
+
 function updateTranslations() {
     if (!localStorage.getItem('translations')) {
         localStorage.setItem('translations', 'on');
     }
     var translationElements = document.querySelectorAll('.translation');
     var translationState = localStorage.getItem('translations') || 'on';
-
     translationElements.forEach(el => {
         el.style.display = translationState === 'on' ? 'block' : 'none';
     });
 }
 
-// ================ THEME =================
+
+// THEME
 (function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
-
     const storedTheme = localStorage.getItem('theme') || 'dark';
-    
     // initial theme and icon
     html.setAttribute('data-theme', storedTheme);
     themeToggle.innerHTML = storedTheme === 'dark' 
         ? '<i class="fa-solid fa-moon nav-btn"></i>' 
         : '<i class="fa-solid fa-sun nav-btn"></i>'; 
-
     // toggle theme function
     function toggleTheme() {
         const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -273,7 +270,6 @@ function updateTranslations() {
             ? '<i class="fa-solid fa-moon nav-btn"></i>'
             : '<i class="fa-solid fa-sun nav-btn"></i>';
     }
-
     // toggle button
     themeToggle.addEventListener('click', toggleTheme);
 })();
