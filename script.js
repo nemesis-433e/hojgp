@@ -14,53 +14,9 @@ function formatChapterFilename(num) {
     return `part${formatted}.html`;
 }
 
-// Load chapter content and update URL if specified
-// function loadChapter(chapterUrl, pushState = true, mouseEvent = null) {
-//     if (pushState) {
-//         const newUrl = `${window.location.pathname}?chapter=${chapterUrl}`;
-//         history.pushState(null, '', newUrl);
-//     }
-
-//     const [file, anchor] = chapterUrl.split('#');
-
-//     fetch(file)
-//         .then(response => {
-//             if (!response.ok) throw new Error("Network response was not ok");
-//             return response.text();
-//         })
-//         .then(html => {
-//             document.getElementById('content-container').innerHTML = html;
-//             updateTranslations();
-//             updateNavigationButtons(chapterUrl);
-//             if (anchor) {
-//                 setTimeout(() => {
-//                     const target = document.getElementById(anchor);
-//                     if (target) target.scrollIntoView({ behavior: 'smooth' });
-//                 }, 50);
-//             }
-//         })
-//         .catch(err => {
-//             console.error("Failed to load chapter:", err);
-//             document.getElementById('content-container').innerHTML = "<p>Error loading chapter.</p>";
-//         });
-// }
 function loadChapter(chapterUrl, pushState = true, mouseEvent = null) {
-    // Handle backward compatibility for existing onclick="loadChapter('file.html', event)" calls
-    if (typeof pushState !== 'boolean') {
-        mouseEvent = pushState;
-        pushState = true;
-    }
-
-    // Handle middle click (button 1)
-    if (mouseEvent?.button === 1) {
-        const newUrl = `${window.location.pathname}index.html?chapter=${encodeURIComponent(chapterUrl)}`;
-        window.open(newUrl, '_blank');
-        return;
-    }
-
-    // Original logic for normal navigation
     if (pushState) {
-        const newUrl = `${window.location.pathname}index.html?chapter=${encodeURIComponent(chapterUrl)}`;
+        const newUrl = `${window.location.pathname}?chapter=${chapterUrl}`;
         history.pushState(null, '', newUrl);
     }
 
@@ -87,8 +43,6 @@ function loadChapter(chapterUrl, pushState = true, mouseEvent = null) {
             document.getElementById('content-container').innerHTML = "<p>Error loading chapter.</p>";
         });
 }
-
-
 
 // Initialize chapter on page load
 window.addEventListener('load', async () => {

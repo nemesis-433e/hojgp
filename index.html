@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 
 <html data-theme="dark" lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<title>Handbook of Japanese Grammar Patterns</title>
-<link href="styles.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <title>Handbook of Japanese Grammar Patterns</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&amp;display=swap"
+        rel="stylesheet" />
 </head>
-<body><!-- Global Navigation Bar -->
-<header>
-<nav id="global-nav">
-<div class="search-container">
-<input autocomplete="off" id="search-input" placeholder="Search grammar points..." type="text"/>
-<span class="close-search">×</span>
-<div class="search-results" id="search-results"></div>
-</div>
-<a href="index.html" title="Home">
-<i class="fa-solid fa-house nav-btn"></i>
-</a>
-<div id="theme-toggle" title="Theme">
-<i class="fa-solid fa-moon nav-btn"></i>
-</div>
-<div id="translation-toggle" onclick="toggleTranslation()" title="Sentence translation">
-<i class="fa-solid fa-language nav-btn"></i>
-</div>
-</nav>
-</header>
-<!-- <div class="buttons"><div id="prev-btn">Previous</div><div id="next-btn">Next</div></div> -->
-<!-- Container where chapters will be loaded -->
-<main id="content-container"><!-- Chapter content will be loaded here -->
-<p>Loading chapter...</p>
-</main><!-- Footer with Next/Previous controls -->
-<script src="script.js"></script>
-<footer>
-<br/>
-<div class="buttons">
-<div id="prev-btn">Previous</div>
-<div id="next-btn">Next</div>
-</div>
-</footer>
+
+<body>
+    
+    <header>
+        <nav id="global-nav">
+            <div class="search-container">
+                <input autocomplete="off" id="search-input" placeholder="Search grammar points..." type="text" />
+                <span class="close-search">×</span>
+                <div class="search-results" id="search-results"></div>
+            </div>
+            <a href="index.html" title="Home">
+                <i class="fa-solid fa-house nav-btn"></i>
+            </a>
+            <div id="theme-toggle" title="Theme">
+                <i class="fa-solid fa-moon nav-btn"></i>
+            </div>
+            <div id="translation-toggle" onclick="toggleTranslation()" title="Sentence translation">
+                <i class="fa-solid fa-language nav-btn"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main id="content-container">
+        <p>Loading chapter...</p>
+    </main>
+
+    <footer>
+        <br />
+        <div class="buttons">
+            <div id="prev-btn">Previous</div>
+            <div id="next-btn">Next</div>
+        </div>
+    </footer>
+
 </body>
+<script src="script.js"></script>
+
 </html>
