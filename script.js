@@ -52,12 +52,14 @@ window.addEventListener('load', async () => {
         // load
         const response = await fetch('chapters.json');
         const chapters = await response.json();
+        const mainChapters = chapters.filter(chapter => chapter.type === 1);
 
         // Create a map for quick lookups and find min/max chapters
-        chapters.forEach(chapter => {
+        mainChapters.forEach(chapter => {
             const fileName = chapter.link.split('#')[0];
             chaptersMap.set(fileName, chapter.title);
         });
+        console.log(mainChapters)
 
         // Get chapter numbers from the map keys
         const chapterNumbers = Array.from(chaptersMap.keys()).map(k =>
@@ -124,14 +126,8 @@ function updateNavigationButtons(currentChapter) {
         prevLink.innerHTML = `←${prevTitle || 'Previous'}`;
         if (prevNum === 7) {
             prevLink.setAttribute('href', 'index.html');
-            prevLink.onclick = () => {
-                updateNavigationButtons(prevFile);
-            };
         } else {
             prevLink.setAttribute('href', `index.html?chapter=${prevFile}`);
-            prevLink.onclick = () => {
-                updateNavigationButtons(prevFile);
-            };
         }
     } else {
         prevBtn.style.display = 'none';
@@ -145,9 +141,6 @@ function updateNavigationButtons(currentChapter) {
         nextBtn.style.display = 'inline-block';
         nextLink.innerHTML = `${nextTitle || 'Next'}→`;
         nextLink.setAttribute('href', `index.html?chapter=${nextFile}`);
-        nextLink.onclick = () => {
-            updateNavigationButtons(nextFile);
-        };
     } else {
         nextBtn.style.display = 'none';
     }
