@@ -25,16 +25,16 @@
 
 /* === HEADER/NAVIGATION === */
  body {
-    font-family: sans-serif;
     margin: 0em;
     padding: 0em;
 	background-color: var(--bg);
 	color: var(--color);
+	min-height: 100vh;
 }
 
 .nav-btn{
 	font-size: 1.5em;
-	margin: 0 0.1em;
+	margin: 0;
 	color: white;
 }
 
@@ -47,7 +47,7 @@ header {
     margin: 0;
     background: var(--nav);
     color: white;
-    padding: 1rem;
+    padding: 0.5rem;
 	position: sticky;
 	top: 0; /* Required for sticky to work */
 	z-index: 100; /* Ensures navbar stays above other content */
@@ -79,13 +79,17 @@ header {
 	color: rgb(0, 110, 255);
 }
 
+footer{
+	max-width: 800px;
+	margin: auto auto 5px;
+}
 #prev-btn{
-	text-align: right;
+	text-align: left;
 	margin-right: 0.25em;
 }
 
 #next-btn{
-	text-align: left;
+	text-align: right;
 	margin-left: 0.25em;
 }
 
@@ -97,9 +101,9 @@ header {
 }
 
 .original{
-	font-size: 1.1em;
+	font-size: 1.2em;
 	letter-spacing: 0.025rem;
-	font-weight: 500;
+	font-weight: 4300;
 	text-indent: -3em;
 }
 
@@ -144,21 +148,24 @@ rt{
 	margin-top: 0.5rem;
 	margin-left: 4em;
 	text-indent: -4em;
+	font-weight: 500;
 }
 
 span.seigo {
 	display: inline-block;
-	color:#5900ff;
+	color:#6515fa;
 	margin-left: 0px;
 	text-indent: 0em;
 	font-size: large;
 	min-width: 50px;
+	font-weight: 600;
 }
 span.type {
 	display: inline-block;
 	margin-left: 0em;
 	text-indent: 0em;
 	color:#5900ff;
+	font-weight: 600;
 }
 span.number {
 	display: inline-block;
@@ -250,9 +257,17 @@ div.indexSubtitle {
 }
 div.indexTitle{
 	cursor: pointer;
+	color: var(--color);
+
+	text-decoration: none;
 }
-div.indexTitle:hover, div.indexSubtitle:hover{
+div.indexTitle a:hover, div.indexSubtitle a:hover{
 	color: var(--main);
+}
+div.indexTitle a, div.indexSubtitle a{
+	cursor: pointer;
+	color: var(--color);
+	text-decoration: none;
 }
 td {
 	padding-right: 0.5em;
@@ -264,12 +279,14 @@ h2.title{
 }
 
 /* === NAV BAR === */
-#global-nav {
+nav {
     position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 0em;
+	max-width: 800px;
+	margin: auto;
 }
 
 .search-container {
@@ -306,6 +323,7 @@ h2.title{
     top: 100%; 
     left: 0;
     right: 0;
+	min-width: 280px;
     max-height: 300px;
     overflow-y: auto;
     background: var(--bg);
@@ -315,14 +333,31 @@ h2.title{
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 .search-result-item {
     padding: 10px;
+	
     cursor: pointer;
     color: var(--color);
     border-bottom: 1px solid #444;
 }
+.search-result-item a {
+    text-decoration: none;
+	color: var(--color);
+	font-size: 0.9em;
+}
+.search-result-item.secondary a{
+    color: rgb(148, 148, 148);
+}
 
 .search-result-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+#secondary-toggle{
+	color: #919191;
+}
+@media (max-width: 500px) {
+	.nav-btn{
+		font-size: 1.25em;
+		margin: 0em;
+	}
 }

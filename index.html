@@ -18,19 +18,22 @@
     
     <header>
         <nav id="global-nav">
+            <a href="index.html" title="Home">
+                <i class="fa-solid fa-house nav-btn"></i>
+            </a>
             <div class="search-container">
                 <input autocomplete="off" id="search-input" placeholder="Search grammar points..." type="text" />
                 <span class="close-search">×</span>
                 <div class="search-results" id="search-results"></div>
             </div>
-            <a href="index.html" title="Home">
-                <i class="fa-solid fa-house nav-btn"></i>
-            </a>
-            <div id="theme-toggle" title="Theme">
-                <i class="fa-solid fa-moon nav-btn"></i>
+            <div id="secondary-toggle" Title="Secondary points">
+                <i class="fa-solid fa-list-ol nav-btn"></i>
             </div>
             <div id="translation-toggle" onclick="toggleTranslation()" title="Sentence translation">
                 <i class="fa-solid fa-language nav-btn"></i>
+            </div>
+            <div id="theme-toggle" title="Theme">
+                <i class="fa-solid fa-moon nav-btn"></i>
             </div>
         </nav>
     </header>
@@ -42,8 +45,8 @@
     <footer>
         <br />
         <div class="buttons">
-            <div id="prev-btn"><a href="">Previous</a></div>
-            <div id="next-btn"><a href="">Next</a></div>
+            <div id="prev-btn"><a href=""></a></div>
+            <div id="next-btn"><a href=""></a></div>
         </div>
     </footer>
 
