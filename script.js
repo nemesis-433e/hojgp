@@ -231,21 +231,29 @@ searchResults.addEventListener('wheel', (e) => {
 
 // SECONDARY GRAMMAR POINTS
 function toggleSecondaryGrammar() {
+    const secondaryElements = document.querySelectorAll('.indexSubtitle');
     const toggleIcon = document.querySelector('#secondary-toggle i');
     if(localStorage.getItem('secondary') === 'on') {
         localStorage.setItem('secondary', 'off');
         toggleIcon.style.color = 'gray';
+        secondaryElements.forEach(function (element) {  element.style.display = 'none';});     
     } else {
         localStorage.setItem('secondary', 'on');
         toggleIcon.style.color = 'white';
+        secondaryElements.forEach(function (element) {  element.style.display = 'block';}); 
     }
 }
 function updateSecondaryGrammar() {
+    const secondaryElements = document.querySelectorAll('.indexSubtitle');
     const toggleIcon = document.querySelector('#secondary-toggle i');
     if(localStorage.getItem('secondary') === 'on') {
         toggleIcon.style.color = 'white';
+        secondaryElements.forEach(function (element) {
+            element.style.display = 'block';});
     }else{
         toggleIcon.style.color = 'gray';
+        secondaryElements.forEach(function (element) {
+            element.style.display = 'none';}); 
     }
 }
 const secondaryToggle = document.getElementById('secondary-toggle');
