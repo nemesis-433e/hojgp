@@ -80,21 +80,6 @@ window.addEventListener('load', async () => {
     }
 });
 
-// PROBABLY USELESS
-// window.addEventListener('popstate', () => {
-//     // Get chapter from query params with correct default
-//     let chapter = getQueryParam('chapter') || 'part0007.html';
-
-//     // Append current hash if it exists
-//     if (window.location.hash) {
-//         chapter += window.location.hash;
-//     }
-
-//     // Load the chapter without creating new history entry
-//     loadChapter(chapter, false);
-// });
-
-
 // =========== NAVIGATION ===========
 function updateNavigationButtons(currentChapter) {
     const [currentFile] = currentChapter.split('#');
@@ -179,7 +164,6 @@ function performSearch(query) {
     }
 }
 
-
 function displayResults(results) {
     searchResults.innerHTML = '';
 
@@ -194,9 +178,12 @@ function displayResults(results) {
                 div.className = 'search-result-item secondary';
             }
             const a = document.createElement('a');
-            div.appendChild(a);
             a.href = `index.html?chapter=${item.link}`;
             a.innerHTML = item.title;
+            a.style.display = 'block';  
+            a.style.width = '100%';     
+            a.style.height = '100%';  
+            div.appendChild(a);
             div.onclick = () => {
                 closeSearchResults();
             };
@@ -236,11 +223,11 @@ function toggleSecondaryGrammar() {
     if(localStorage.getItem('secondary') === 'on') {
         localStorage.setItem('secondary', 'off');
         toggleIcon.style.color = 'gray';
-        secondaryElements.forEach(function (element) {  element.style.display = 'none';});     
+        // secondaryElements.forEach(function (element) {  element.style.display = 'none';});     
     } else {
         localStorage.setItem('secondary', 'on');
         toggleIcon.style.color = 'white';
-        secondaryElements.forEach(function (element) {  element.style.display = 'block';}); 
+        // secondaryElements.forEach(function (element) {  element.style.display = 'block';}); 
     }
 }
 function updateSecondaryGrammar() {
